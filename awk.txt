@@ -1,0 +1,4 @@
+awk '{print $1}' testfile.txt
+awk '{print $2}' testfile.txt
+awk -F, '{print $1}' testcsv.csv
+uptime | awk {' split($4, nocomma, ","); print $3, nocomma[1]'}

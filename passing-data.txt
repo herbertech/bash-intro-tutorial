@@ -1,0 +1,24 @@
+This section did not have any shell scripts, instead we used in-line commands. 
+Here are all the commands used:
+
+-Piping
+ls -l /usr/bin | grep bash
+
+- Send output to a file
+echo hello world > hello.txt
+echo good day to you > hello.txt
+rm hello.txt
+echo hello world >> hello.txt
+echo good day to you >> hello.txt
+cat hello.txt
+
+-Get input from a file or text
+
+wc -w hello.txt
+wc -w < hello.txt
+cat << EOF
+ I will
+ write some
+ text here
+EOF
+wc -w <<< "Hello there word count"
