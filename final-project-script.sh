@@ -10,6 +10,9 @@
 ##TODO: #1 Add countdown timer to final project
 ##TODO: #2 Add logging to the final project
 ##TODO: #3 Add positional argument function to final project
+
+
+logfilelocation="/home/herbert/logs/bashlogs.log"
 showhelp(){
 cat << EOF
 *****************************************************
@@ -23,6 +26,7 @@ uptime      -> Display how long this machine has been running.
 datetime    -> Display the time and date
 replacewords-> Replace words in a file
 readelement -> Read the nth element of a text file
+countdown   -> Countdown a number of seconds
 
 -----------------------------------------------------
 *****************************************************
@@ -32,7 +36,7 @@ EOF
 ##SHOW IP ADDRESS FUNCTION
 showip(){
 echo "This machine's IP address is:"
-hostname -I
+hostname -I | awk '{print $1}'
 }
 
 ##SHOW HOSTNAME FUNCTION
@@ -55,7 +59,7 @@ EOF
 }
 
 showdatetime(){
-    TZ='Europe/Brussels' date "+Current day: %d-%m-%y Current time: %H:%M:%S"
+    TZ='Europe/Brussels' date "+%d-%m-%y - %H:%M:%S"
 }
 
 replacewords(){
@@ -95,6 +99,21 @@ readelement(){
     done
 }
 
+countdown(){
+    re='^[0-9]+$'
+    if ! [[ $1 =~ $re ]]
+    then
+        echo "Enter a number after countdown to count down in seconds."
+    else
+        count=$1
+        for i in $(seq $1); do
+            echo $count
+            count="$(($count-1))"
+            sleep 1
+        done
+    fi
+}
+
 case $1 in
     "help")
     showhelp
@@ -117,7 +136,15 @@ case $1 in
     "readelement")
     readelement
     ;;
+    "countdown")
+    countdown $2
+    ;;
     *)
     showhelp
     ;;
 esac
+
+if ! [ -z $1 ]
+then
+    echo "$(showdatetime) | User $(whoami) ran $(basename $0) with option $1" >> $logfilelocation
+fi
