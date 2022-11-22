@@ -4,15 +4,9 @@
 # This tool is very simple and modular, you can add your own functions
 # so you don't need to remember all the commands and parameters.
 
-###HELP FUNCTION
-
-
-##TODO: #1 Add countdown timer to final project
-##TODO: #2 Add logging to the final project
-##TODO: #3 Add positional argument function to final project
-
-
 logfilelocation="/home/herbert/logs/bashlogs.log"
+
+###HELP FUNCTION
 showhelp(){
 cat << EOF
 *****************************************************
