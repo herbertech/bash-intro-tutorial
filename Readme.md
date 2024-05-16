@@ -426,11 +426,8 @@ array_name+=(item item item)
 
 - `array_name`: The name of the array you assign.
 - `+=`: Compound operator to add array elements.
-- `item`: value you want to put in your array.
+- `item`: Value you want to put in your array.
 
 ```bash
 MyArray+=(one two three)
 ```
-
-*How to add value to arrays
-
