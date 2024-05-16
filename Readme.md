@@ -371,21 +371,65 @@ You can assign multiple values to one variable collected in a list which we call
 <br>
 <br>
 You can create them like this:
-
 ```bash
 VariableName=(value1 value2 value3 value3)
 ```
 - `VariableName`: Name of the array you want.
 - `()` (brackets): You can use which of `()`, `[]`, `{}` but you should remember to use the same opening and closing brackets.
 - ` ` (space): Each index of values separated by space.
+<br>
 
 To call them you should do
 
 ```bash
 ${VariableName[index]}
 ```
-- `VariableName`: Name of the array you Initialized
+- `VariableName`: Name of the array you Initialized.
 - `index`: The index number you want. Indexes start from `0`. To use all of the indexes in your array you can use `@` as your index.
-*Empty array
+<br>
+
+You can declare an empty array too. Here's how to do it:
+
+```bash
+declare -a <array_name>
+```
+
+- `declare`: Bash command used to explicitly set the array variable attribute.
+- `-a`: Option indicating the declaration of an indexed array.
+-  `<array_name>`: The name you want to assign to the array.
+
+```bash
+declare -a MyArray
+```
+
+<br>
+
+For adding new values after declaration you can do either of these:
+
+```bash
+array_name[position]=value
+```
+- `array_name`: The name of the array you assign.
+- `position`: The index at which you want to assign value.
+- `value`: The item you insert to the specified index.
+
+```bash
+MyArray[1]=one
+```
+
+or
+
+```bash
+array_name+=(item item item)
+```
+
+- `array_name`: The name of the array you assign.
+- `+=`: Compound operator to add array elements.
+- `item`: value you want to put in your array.
+
+```bash
+MyArray+=(one two three)
+```
+
 *How to add value to arrays
 
