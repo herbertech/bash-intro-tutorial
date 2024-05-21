@@ -431,3 +431,38 @@ array_name+=(item item item)
 ```bash
 MyArray+=(one two three)
 ```
+<br>
+<br>
+
+## For loop
+One of the ways of having loop is `for` loop. It reads each value of your array in each loop and puts it in a variable for later usage.
+<br>
+<br>
+
+The `for` loop syntax is like:
+
+```bash
+for ItemsName in ArrayName;
+do
+    #Your code
+done
+```
+- `ItemsName`: The name of each value of your array. You can access it later as a variable ***inside*** the loop.
+- `ArrayName`: The name of the array you assigned.
+- `do`: Start sign of for loop. ***After*** this, your code should be placed.
+- `done`: End sign of for loop. ***Before*** this, your code should be placed.
+
+For example:
+```bash
+Mylist=(one two three four five)
+for item in ${Mylist[@]};
+do
+    echo $item
+done
+```
+- `Mylist`: The name of the array.
+- `item`: The name of each value of Mylist array.
+- `${Mylist[@]}`: Calling the array with all of its indexes or values (by ***@*** as the array index).
+- `echo`: Prints value to the output.
+- `$item`: Calling the local variable which contains one of the array's values in each loop.
+
